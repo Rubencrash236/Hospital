@@ -43,7 +43,7 @@ class PersonaController extends Controller
             'segundo_nombre'=>'',
             'primer_apellido'=>'required',
             'segundo_apellido'=>'',
-            'fecha_nac'=>'required'
+            'fecha_nac'=>''
         ]);
 
         Persona::create($request->all());
@@ -59,7 +59,8 @@ class PersonaController extends Controller
      */
     public function show($id)
     {
-        //
+        $personas = Persona::find($id);
+        return view('persona.detail',compact('personas'));
     }
 
     /**
@@ -70,7 +71,8 @@ class PersonaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $personas = Persona::find($id);
+        return view('persona.edit',compact('personas'));
     }
 
     /**
@@ -82,7 +84,25 @@ class PersonaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'cedula' => 'required',
+            'primer_nombre'=>'required',
+            'segundo_nombre'=>'',
+            'primer_apellido'=>'required',
+            'segundo_apellido'=>'',
+            'fecha_nac'=>''
+        ]);
+
+        $personas = Persona::find($id);
+        $personas->cedula = $request->get('cedula');
+        $personas->primer_nombre = $request->get('primer_nombre');
+        $personas->segundo_nombre = $request->get('segundo_nombre');
+        $personas->primer_apellido = $request->get('primer_apellido');
+        $personas->segundo_apellido = $request->get('segundo_apellido');
+        $personas->fecha_nac = $request->get('fecha_nac');
+        $personas->save();
+        return redirect()->route('persona.index')
+                ->with('success','La operacion fue hecha con exito');
     }
 
     /**
@@ -93,6 +113,9 @@ class PersonaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $personas = Persona::find($id);
+        $personas->delete();
+        return redirect()->route('persona.index')
+                ->with('success', 'Borrado con resultado positivo');
     }
 }

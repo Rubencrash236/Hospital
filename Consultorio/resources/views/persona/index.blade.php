@@ -19,7 +19,7 @@
 
         <table class = "table table-hover table-sm">
             <tr>
-                <th width="50px"><b>id</b></th>
+                <th width="100px"><b>cedula</b></th>
                 <th width ="300px">Nombre Paciente</th>
                 <th width="300px">Primer Apellido</th>
                 <th width="180px">Accciones</th>
@@ -27,13 +27,13 @@
 
             @foreach ($personas as $persona)
             <tr>
-                <td><b>{{$persona->id_persona}}</b></td>
+                <td><b>{{$persona->cedula}}</b></td>
                 <td>{{$persona->primer_nombre}}</td>
-                <td>{{$persona->segundo_nombre}}</td>
+                <td>{{$persona->primer_apellido}}</td>
                 <td>
-                    <form action="{{ route('persona.destroy', $persona->id_persona)}}" method ="post">
-                        <a class="btn btn-sm btn-success" href="{{route('persona.show',$persona->id_persona)}}">Ver</a>
-                        <a class="btn btn-sm btn-success" href="{{route('persona.edit',$persona->id_persona)}}">Editar</a>
+                    <form action="{{ route('persona.destroy', $persona->id)}}" method ="post">
+                        <a class="btn btn-sm btn-success" href="{{route('persona.show',$persona->id)}}">Ver</a>
+                        <a class="btn btn-sm btn-success" href="{{route('persona.edit',$persona->id)}}">Editar</a>
 
                         @csrf
                         @method('DELETE')
