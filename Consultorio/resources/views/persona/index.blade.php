@@ -22,7 +22,7 @@
                 <th width="100px"><b>cedula</b></th>
                 <th width ="300px">Nombre Paciente</th>
                 <th width="300px">Primer Apellido</th>
-                <th width="180px">Accciones</th>
+                <th width="180px">Acciones</th>
             </tr>
 
             @foreach ($personas as $persona)
@@ -33,7 +33,7 @@
                 <td>
                     <form action="{{ route('persona.destroy', $persona->id)}}" method ="post">
                         <a class="btn btn-sm btn-success" href="{{route('persona.show',$persona->id)}}">Ver</a>
-                        <a class="btn btn-sm btn-success" href="{{route('persona.edit',$persona->id)}}">Editar</a>
+                        <a class="btn btn-sm btn-warning" href="{{route('persona.edit',$persona->id)}}">Editar</a>
 
                         @csrf
                         @method('DELETE')

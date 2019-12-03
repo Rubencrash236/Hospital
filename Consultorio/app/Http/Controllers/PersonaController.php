@@ -43,7 +43,19 @@ class PersonaController extends Controller
             'segundo_nombre'=>'',
             'primer_apellido'=>'required',
             'segundo_apellido'=>'',
-            'fecha_nac'=>''
+            'fecha_nac'=>'',
+            'sexo' => 'required',
+            'ARS'=>'',
+            'estatura'=>'required',
+            'menarquia'=>'',
+            'frecuencia_menstrual'=>'',
+            'duracion_menstrual'=>'',
+            'cantidad_embarazos'=>'',
+            'cantidad_aborto'=>'',
+            'cantidad_cesaria'=>'',
+            'cantidad_partos_nat'=>'',
+            'antecedentes_familiares'=>'',
+            'habitos'=>'',
         ]);
 
         Persona::create($request->all());
@@ -90,7 +102,19 @@ class PersonaController extends Controller
             'segundo_nombre'=>'',
             'primer_apellido'=>'required',
             'segundo_apellido'=>'',
-            'fecha_nac'=>''
+            'fecha_nac'=>'',
+            'sexo' => 'required',
+            'ARS'=>'',
+            'estatura'=>'required',
+            'menarquia'=>'',
+            'frecuencia_menstrual'=>'',
+            'duracion_menstrual'=>'',
+            'cantidad_embarazos'=>'',
+            'cantidad_aborto'=>'',
+            'cantidad_cesaria'=>'',
+            'cantidad_partos_nat'=>'',
+            'antecedentes_familiares'=>'',
+            'habitos'=>'',
         ]);
 
         $personas = Persona::find($id);
@@ -100,6 +124,17 @@ class PersonaController extends Controller
         $personas->primer_apellido = $request->get('primer_apellido');
         $personas->segundo_apellido = $request->get('segundo_apellido');
         $personas->fecha_nac = $request->get('fecha_nac');
+        $persona->sexo = $request->get('sexo');
+        $persona->ARS = $request->get('ARS');
+        $persona->estatura = $request->get('estatura');
+        $persona->menarquia = $request->get('menarquia');
+        $persona->frecuencia_menstrual = $request->get('frecuencia_menstrual');
+        $persona->cantidad_embarazos = $request->get('cantidad_embarazos');
+        $persona->cantidad_aborto = $request->get('cantidad_aborto');
+        $persona->cantidad_cesaria = $request->get('cantidad_cesaria');
+        $persona->cantidad_partos_nat = $request->get('cantidad_partos_nat');
+        $persona->antecedentes_familiares =$request->get('antecedentes_familiares');
+        $persona->habitos = $request->get('habitos');
         $personas->save();
         return redirect()->route('persona.index')
                 ->with('success','La operacion fue hecha con exito');
