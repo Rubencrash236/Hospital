@@ -7,7 +7,7 @@
                 <h3>Pacientes Registrados</h3>
             </div>
             <div class = "col-sm-2">
-                <a class="btn btn-sm btn-success" href ="{{ route('Persona.create') }}">Registrar Paciente</a>
+                <a class="btn btn-sm btn-success" href ="{{ route('persona.create') }}">Registrar Paciente</a>
             </div>
         </div>
         
@@ -31,9 +31,9 @@
                 <td>{{$persona->primer_nombre}}</td>
                 <td>{{$persona->segundo_nombre}}</td>
                 <td>
-                    <form action="{{ route('Persona.destroy', $persona->id_persona)}}" method ="post">
-                        <a class="btn btn-sm btn-success" href="{{route('Persona.show',$persona->id_persona}}">Ver</a>
-                        <a class="btn btn-sm btn-success" href="{{route('Persona.edit',$persona->id_persona}}">Editar</a>
+                    <form action="{{ route('persona.destroy', $persona->id_persona)}}" method ="post">
+                        <a class="btn btn-sm btn-success" href="{{route('persona.show',$persona->id_persona)}}">Ver</a>
+                        <a class="btn btn-sm btn-success" href="{{route('persona.edit',$persona->id_persona)}}">Editar</a>
 
                         @csrf
                         @method('DELETE')

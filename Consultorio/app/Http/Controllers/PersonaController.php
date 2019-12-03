@@ -15,7 +15,7 @@ class PersonaController extends Controller
     public function index()
     {
         $personas = Persona::latest()->paginate(5);
-        return view('persona.index', compact('Persona'))
+        return view('persona.index', compact('personas'))
             ->with('i',(request()->input('page',1)-1)*5);
     }
 
@@ -26,7 +26,7 @@ class PersonaController extends Controller
      */
     public function create()
     {
-        //
+        return view('persona.create');
     }
 
     /**
@@ -37,7 +37,18 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'cedula' => 'required',
+            'primer_nombre'=>'required',
+            'segundo_nombre'=>'',
+            'primer_apellido'=>'required',
+            'segundo_apellido'=>'',
+            'fecha_nac'=>'required'
+        ]);
+
+        Persona::create($request->all());
+        return redirect()->route('persona.index')
+            ->with('success','Paciente registrado con exito.');
     }
 
     /**

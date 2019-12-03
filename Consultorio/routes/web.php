@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('menu-principal');
 });
+Auth::routes();
 route::resource('persona','PersonaController');
 
 
